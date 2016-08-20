@@ -40,14 +40,28 @@
                 android:layout_marginRight="30dp">
 
                 <EditText
-                    android:layout_width="wrap_content"
+                    android:layout_width="138dp"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
                     android:ems="10"
-                    android:id="@+id/moneyBalance"
+                    android:id="@+id/startDate"
+                    android:hint="Input START Date"
+                    android:layout_gravity="left|center"
                     android:layout_weight="1"
-                    android:hint="Enter a value of money balance"
-                    android:layout_gravity="center" />
+                    android:focusable="false"
+                    android:gravity="center_horizontal" />
+
+                <EditText
+                    android:layout_width="138dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:ems="10"
+                    android:id="@+id/endDate"
+                    android:hint="Input END Date"
+                    android:layout_gravity="center|right"
+                    android:layout_weight="1"
+                    android:focusable="false"
+                    android:gravity="center_horizontal" />
 
             </LinearLayout>
         </LinearLayout>
@@ -71,7 +85,8 @@
             android:allowUndo="false"
             android:hint="Enter a number for receiving SMS"
             android:layout_weight="1"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:gravity="center_horizontal" />
 
     </LinearLayout>
 

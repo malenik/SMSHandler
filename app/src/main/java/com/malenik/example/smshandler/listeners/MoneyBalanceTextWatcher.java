@@ -9,6 +9,7 @@ import com.malenik.example.smshandler.SMSState;
 /**
  * Created by NIK on 14.07.2016.
  */
+/*
 public class MoneyBalanceTextWatcher implements TextWatcher {
 
     @Override
@@ -25,7 +26,9 @@ public class MoneyBalanceTextWatcher implements TextWatcher {
         } catch (NumberFormatException e){
             value = 0.0;
         }
-        SMSState.setMoneyBalance(value);
+        */
+/*SMSState.setMoneyBalance(value);*//*
+
     }
 
     @Override
@@ -33,3 +36,4 @@ public class MoneyBalanceTextWatcher implements TextWatcher {
 
     }
 }
+*/

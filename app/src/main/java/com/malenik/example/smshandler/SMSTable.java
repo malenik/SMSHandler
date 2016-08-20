@@ -11,13 +11,15 @@ public class SMSTable {
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_NUMBER = "number";
     public static final String COLUMN_BODY = "body";
+    public static final String COLUMN_DATE = "date";
 
-    private static final String DATABASE_CREATE = "create table "
+    public static final String DATABASE_CREATE = "create table "
             + TABLE_SMS
             + "("
             + COLUMN_ID + " integer primary key autoincrement, "
             + COLUMN_NUMBER + " text not null, "
-            + COLUMN_BODY + " text not null "
+            + COLUMN_BODY + " text not null, "
+            + COLUMN_DATE + " text not null"
             + ");";
 
     public static void onCreate(SQLiteDatabase database) {

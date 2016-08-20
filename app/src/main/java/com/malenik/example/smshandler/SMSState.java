@@ -5,7 +5,9 @@ import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Currency;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,8 +18,37 @@ import java.util.Map;
 public class SMSState {
 
     private static String phoneNumber;
-    private static Double moneyBalance;
+    private static Double moneyBalance = 0.0;
     private static String currency = "UAH";
+    private static Date startDate = new Date();
+    private static Date endDate = new Date();
+
+    public static void setStartDate(int year, int month, int date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.clear();
+        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.DATE, date);
+        SMSState.startDate = calendar.getTime();
+    }
+
+    public static void setEndDate(int year, int month, int date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.clear();
+        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.DATE, date);
+        SMSState.endDate = calendar.getTime();
+    }
+
+    public static Date getStartDate() {
+
+        return startDate;
+    }
+
+    public static Date getEndDate() {
+        return endDate;
+    }
 
     public static String getCurrency() {
         return currency;
@@ -54,7 +85,7 @@ public class SMSState {
     }
 
     public static Boolean isEmpty() {
-        return SMSState.phoneNumber == null || SMSState.moneyBalance == null;
+        return SMSState.phoneNumber == null; // || SMSState.moneyBalance == null;
     }
 
 }

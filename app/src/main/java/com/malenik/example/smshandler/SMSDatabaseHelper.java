@@ -1,16 +1,11 @@
 package com.malenik.example.smshandler;
 
-import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.telephony.SmsMessage;
 
-/**
- * Created by NIK on 04.05.2016.
- */
 public class SMSDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "smstable.db";
@@ -39,18 +34,29 @@ public class SMSDatabaseHelper extends SQLiteOpenHelper {
         database.execSQL("DELETE FROM " + SMSTable.TABLE_SMS);
     }
 
-    public boolean exists(String number, String body) {
+    public void drop(){
+        SQLiteDatabase database = this.getWritableDatabase();
+        database.execSQL("DROP TABLE " + SMSTable.TABLE_SMS);
+    }
+
+    public void create(){
+        SQLiteDatabase database = this.getWritableDatabase();
+        database.execSQL(SMSTable.DATABASE_CREATE);
+    }
+
+    public boolean exists(String number, String body, String date) {
         body = body.replace("'", "");
         SQLiteDatabase database = this.getWritableDatabase();
-        Cursor cursor = database.rawQuery("SELECT * FROM " + SMSTable.TABLE_SMS + " WHERE " + SMSTable.COLUMN_NUMBER + "='" + number + "' AND " + SMSTable.COLUMN_BODY + "='" + body + "'", null);
+        Cursor cursor = database.rawQuery("SELECT * FROM " + SMSTable.TABLE_SMS + " WHERE " + SMSTable.COLUMN_NUMBER + "='" + number + "' AND " + SMSTable.COLUMN_BODY + "='" + body + "' AND " + SMSTable.COLUMN_DATE + "='" + date + "'", null);
         return cursor.moveToNext();
     }
 
-    public boolean insertData(String number, String body) {
+    public boolean insertData(String number, String body, String date) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(SMSTable.COLUMN_NUMBER, number);
         values.put(SMSTable.COLUMN_BODY, body);
+        values.put(SMSTable.COLUMN_DATE, date);
 
         long result = database.insert(SMSTable.TABLE_SMS, null, values);
         if (result == -1)
