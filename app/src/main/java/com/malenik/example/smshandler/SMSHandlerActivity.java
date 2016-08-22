@@ -201,6 +201,7 @@ public class SMSHandlerActivity extends FragmentActivity implements View.OnClick
                 builder.append("Body: " + res.getString(2) + "\n");
                 builder.append("Date: " + res.getString(3) + "\n\n");
                 i++;
+                SMSState.setMoneyBalance(0.0);
             }
             showMessage("Selected Messages", builder.toString());
         }
