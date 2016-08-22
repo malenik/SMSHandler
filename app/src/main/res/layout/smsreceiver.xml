@@ -83,7 +83,7 @@
             android:ems="10"
             android:id="@+id/phoneNumber"
             android:allowUndo="false"
-            android:hint="Enter a number for receiving SMS"
+            android:hint="Enter a phone number (+380...)"
             android:layout_weight="1"
             android:layout_gravity="center"
             android:gravity="center_horizontal" />
